@@ -1,0 +1,12 @@
+{
+    "files": [
+        "src/_references.ts"
+    ],
+    "compilerOptions": {
+        "lib": ["es6", "dom"],
+        "target": "es5",
+        "module": "system",
+        "outFile": "dist/app.js",
+        "sourceMap": true
+    }
+}

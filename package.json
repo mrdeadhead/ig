@@ -1,0 +1,32 @@
+{
+  "name": "ig",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "ts": "gulp ts",
+    "less": "gulp less",
+    "test": "gulp test",
+    "build": "gulp"
+  },
+  "keywords": [],
+  "author": "Tomasz Kowalkiewicz",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.9"
+  },
+  "devDependencies": {
+    "@types/angular": "^1.6.57",
+    "angular-mocks": "^1.7.9",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-karma": "0.0.5",
+    "gulp-less": "^4.0.1",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^3.1.0",
+    "puppeteer": "^2.1.0",
+    "typescript": "^3.7.5"
+  }
+}

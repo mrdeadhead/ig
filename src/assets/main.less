@@ -1,0 +1,51 @@
+@arrowColor: #000;
+@crossColor: #F00;
+@sortedColor: #777;
+
+body {
+  padding-top: 5rem;
+}
+
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.arrow {
+  border: solid fade(@arrowColor, 30%);
+  border-width: 0 3px 3px 0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px;
+
+  &--up {
+    transform: rotate(-135deg) translate(-10px, 10px);
+  }
+
+  &--down {
+    transform: rotate(45deg) translate(0px, -5px);
+  }
+
+  &--active {
+    border-color: @arrowColor;
+  }
+}
+
+.sort-description{
+  &__element {
+    color: @sortedColor;
+    font-style: italic;
+    margin: 0 0.5em;
+  }
+
+  &__remove {
+    cursor: pointer;
+    font-weight: bold;
+
+    &:after {
+      color: @crossColor;
+      content: "\00d7";
+      display: inline-block;
+    }
+  }
+}

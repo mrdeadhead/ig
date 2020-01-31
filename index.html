@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html ng-app="ig">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>IG - recruitment task</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <link rel="stylesheet" href="dist/main.css" />
+    </head>
+    <body ng-cloak>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">IG App</a>      
+        </nav>
+        <main role="main" class="container">
+            
+            <div class="starter-template" ng-controller="accountListCtrl as vm">
+                <h1>Accounts list</h1>
+                <div class="text-center" ng-if="vm.model.loader">
+                  <div class="spinner-border text-secondary" role="status" aria-hidden="true"></div>
+                  <p>Loading data, please wait...</p>
+                </div>
+                <p ng-if="vm.model.order.arr.length" class="sort-description">
+                  Sorted by:
+                  <span class="sort-description__element" ng-repeat="orderElement in vm.model.order.obj track by $index">
+                      {{::orderElement.name}} ({{orderElement.isDesc ? 'desc' : 'asc'}}) {{(vm.model.order.obj.length-1 !== $index) ? ',' : ''}}
+                  </span>
+                  <span class="sort-description__remove" title="Remove sorting" ng-click="vm.removeSorting()"></span>
+                </p>
+                <table class="table" ng-if="!vm.model.loader && vm.model.accounts.length">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col"><sortable-header label="Name" column="name" order="vm.model.order"></sortable-header></th>
+                        <th scope="col"><sortable-header label="Profit & Loss" column="profitLoss" order="vm.model.order"></sortable-header></th>
+                        <th scope="col"><sortable-header label="Account Type" column="type.title" order="vm.model.order"></sortable-header></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="account in vm.model.accounts | orderBy: vm.model.order.arr">
+                        <th scope="row">{{::account.name}}</th>
+                        <td>{{::account.currency + account.profitLoss}}</td>
+                        <td>{{::account.type.title}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+                <p ng-if="vm.model.accounts.lenth === 0 && !vm.model.error" class="alert alert-warning" role="alert">Sorry, we didn't find anything :(</p>
+                <p ng-if="vm.model.error" class="alert alert-danger" role="alert">There was some error, please try again</p>
+            </div>
+        </main>
+        
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="dist/app.js"></script>
+    </body>
+</html>
